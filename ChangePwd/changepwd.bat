@@ -30,7 +30,7 @@ wmic useraccount where name='%USERNAME%' call Rename %name%
 goto end
 
 :end
-pause
+REM pause
 REM echo exit
 REM echo !nam!
 REM echo !pwd!
