@@ -34,4 +34,4 @@ pause
 REM echo exit
 REM echo !nam!
 REM echo !pwd!
-REM exit
+exit
