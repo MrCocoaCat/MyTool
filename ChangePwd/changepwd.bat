@@ -9,7 +9,7 @@ REM echo %%i
 REM echo %%j
 set name=%%i
 set pwd=%%j
-net user %%i >nul 2>nul && goto set || goto add
+net user %%i >nul 2>nul && goto set || goto change
 )
 
 :set
@@ -21,6 +21,12 @@ goto end
 echo add
 @net user !name! !pwd! /add /active:yes
 net localgroup administrators !name! /add
+goto end
+
+:change
+echo Change Name
+wmic useraccount where name='%USERNAME%' call Rename %name%
+@net user !name! !pwd!  
 goto end
 
 :end
