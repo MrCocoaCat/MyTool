@@ -4,7 +4,7 @@ set name = admin
 set pwd = admin
 
 setlocal enabledelayedexpansion 
-for /f "tokens=1,2 delims=:" %%i in (pwd.txt) do (
+for /f "tokens=1,2 delims=:" %%i in (pwd.conf) do (
 REM echo %%i
 REM echo %%j
 set name=%%i
