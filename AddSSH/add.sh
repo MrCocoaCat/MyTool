@@ -11,8 +11,9 @@ do
             set timeout 5;
             spawn ssh-copy-id -i /root/.ssh/id_rsa.pub ${UserName}@${host}
             expect {
-                                \"yes/no\" { send \"yes\r\"; exp_continue }
-                \"*assword\" { send \"${Passwd}\r\" }
+                     "yes/no" { send \"yes\r\"; exp_continue }
+                     "password" { send \"${Passwd}\r\" }
+                     "already" { exit }
 
              } ;
             expect eof
