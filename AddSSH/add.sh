@@ -1,4 +1,5 @@
 #!/bin/bash
+cd $(dirname $0)
 HOSTS=`cat list.txt`
 #echo $HOSTS
 UserName=$1
