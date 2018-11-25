@@ -1,6 +1,9 @@
 #!/bin/bash
+#
+#
+
 cd $(dirname $0)
-HOSTS=`cat temp.txt`
+HOSTS=`cat list.txt`
 #echo $HOSTS
 UserName=$1
 Passwd=$2
