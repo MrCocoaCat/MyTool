@@ -1,7 +1,11 @@
 #!/bin/bash
-#host user passwd
+#author:liyubo
+#list.txt:host user passwd
 #
 # 
+basepath=$(cd `dirname $0`; pwd)
+cd $basepath
+
 cat list.txt | while read line
 do  
 	#echo $host

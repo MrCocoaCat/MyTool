@@ -1,7 +1,9 @@
 #!/bin/bash
+#author:liyubo
 #
-#
-cd $(dirname $0)
+basepath=$(cd `dirname $0`; pwd)
+cd $basepath
+
 HOSTS=`cat list.txt`
 #echo $HOSTS
 UserName=$1
