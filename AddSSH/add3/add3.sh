@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+#
+
+cd $(dirname $0)
+HOSTS=`cat list.txt`
+#echo $HOSTS
+for host in $HOSTS
+do
+        echo $host
+        UserName=$1
+        Passwd=$2
+        expect -c "
+            set timeout 5;
+            spawn ssh-copy-id -i /root/.ssh/id_rsa.pub ${UserName}@${host}
+            expect {
+                     "yes/no" { send \"yes\r\"; exp_continue }
+                     "password" { send \"${Passwd}\r\" }
+                     "already" { exit }
+
+             } ;
+            expect eof
+        "
+done
