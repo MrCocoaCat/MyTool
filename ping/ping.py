@@ -16,21 +16,14 @@ def run_command(cmd, redirect_output=True, check_exit_code=True):
     """
     Runs a command in an out-of-process shell, returning the
     output of that command.  Working directory is ROOT.
-    执行命令，在一个程序外的shell进程,
-    执行目录为ROOT
     """
     # subprocess模块用于产生子进程
-    # 如果参数为redirect_output ，则创建PIPE
     if redirect_output:
         stdout = subprocess.PIPE
     else:
         stdout = None
     # cwd 参数指定子进程的执行目录为ROOT，执行cwd 函数
     proc = subprocess.Popen(cmd, cwd=ROOT, stdout=stdout)
-    # 如果子进程输出了大量数据到stdout或者stderr的管道，并达到了系统pipe的缓存大小的话，
-    # 子进程会等待父进程读取管道，而父进程此时正wait着的话，将会产生死锁。
-    # Popen.communicate()这个方法会把输出放在内存，而不是管道里，
-    # 所以这时候上限就和内存大小有关了，一般不会有问题。
     # 使用communicate() 返回值为 (stdoutdata , stderrdata )
     output = proc.communicate()[0]
     if check_exit_code and proc.returncode != 0:
